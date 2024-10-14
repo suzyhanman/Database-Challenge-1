@@ -1,0 +1,52 @@
+Steps to Improve Query Performance for Books Table
+
+1. Indexing
+
+By default all Foreign keys are being indexed as they will frequently referenced in queries. AS the application is in use we monitor performance and identify columns frquently used in 
+WHERE clauses, JOINs, and ORDER BY clauses. 
+
+2. Database Maintenance
+
+	2.1	Regularly Update Statistics:
+			Ensure that database statistics are updated regularly to help the query optimizer make informed decisions. I usually execute sp-updatestats at the end of each script I run against the database
+	2.2	Fragment Tables:
+			Periodically defragment tables and rebuild indexes to improve access speed.
+		
+3. Database Optimization
+
+	3.1 Analyze and Optimize Queries:
+		Review the execution plans of slow queries to identify bottlenecks. Use tools such as EXPLAIN in SQL to get insights into how queries are executed.
+	3.2 Optimize SQL Queries:
+		Rewrite inefficient queries, reduce subqueries, and ensure the use of JOINs instead of nested queries where appropriate.
+
+4. Database Partitioning
+
+	4.1 Horizontal Partitioning:
+		Partitioning the Books table based on a scertain attribute as Genre or Language for example so the amout of data being retrieved is way less than before.
+	4.2 Vertical Partitioning:
+		Split the table where the columns that are not frequently accessing are in a seperate table.
+
+5. Caching
+
+	5.1 Implement Query Caching:
+		In-memory caching solution to cache results of frequently accessed queries.
+	5.2 Application-Level Caching:
+		Cache the results on the application side to reduce load on the database for repeated requests.
+
+
+
+6. Upgrade Hardware
+	Upgrading server resources (CPU, RAM, SSD storage) or moving to a more powerful database server (if all of the above did not help).
+
+7. Database Sharding
+
+8. Distribute the Load:
+ 	If data is continuously growing at a fast pace, consider implementing sharding to distribute the database across multiple servers. This approach requires significant architectural changes but can vastly improve performance.
+
+8. Use of Full-Text Search (if applicable)
+	If text searches are a common requirement as searching titles, consider using full-text indexing to speed up these queries.
+
+
+
+
+
