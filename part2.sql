@@ -175,9 +175,9 @@ CREATE TABLE [dbo].[BookStatus]
 (
  [BookStatusID] Int IDENTITY(1,1) NOT NULL,
  [BookID] Int NOT NULL,
- [BorrowerID] Int NULL,
- [DateBorrowed] Datetime NULL,
- [DateDue] Datetime NULL,
+ [BorrowerID] Int NOT NULL,
+ [DateBorrowed] Datetime NOT NULL,
+ [DateDue] Datetime NOT NULL,
  [DateReturned] Datetime NULL
 )
 ON [PRIMARY]
